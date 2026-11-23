@@ -54,8 +54,13 @@ h1,h2{color:var(--ink)}
 .hero.gray{filter:saturate(.55);background-color:#D8DDD3}
 .hero .hill{display:none}
 .hero>div[style*="position:relative"]{height:100%;min-height:438px;display:flex;flex-direction:column;justify-content:flex-end}
-#homeplant{position:absolute;left:50%;top:52px;transform:translateX(-50%);width:250px;height:240px;display:flex;align-items:flex-end;justify-content:center}
+#homeplant{position:absolute;left:50%;top:46px;transform:translateX(-50%);width:250px;height:240px;margin-top:0;display:flex;align-items:flex-end;justify-content:center}
 #homeplant .character-art{max-width:235px;max-height:235px}
+#homeplant .character-art[data-growth="0"]{width:142px;max-width:142px;max-height:160px;margin-bottom:42px}
+#homeplant .character-art[data-growth="1"]{width:172px;max-width:172px;max-height:188px;margin-bottom:30px}
+#homeplant .character-art[data-growth="2"]{width:198px;max-width:198px;max-height:205px;margin-bottom:22px}
+#homeplant .character-art[data-growth="3"]{width:218px;max-width:218px;max-height:220px;margin-bottom:12px}
+#homeplant .character-art[data-growth="4"]{width:235px;max-width:235px;max-height:235px;margin-bottom:0}
 .bub{top:18px;background:#FFFDF7;border:1px solid rgba(92,77,49,.15);color:var(--ink);max-width:230px}
 .hero .row{position:relative}
 .hero .bar{position:relative;height:11px;background:#E5DDCA;border:2px solid rgba(91,74,42,.1)}
@@ -139,5 +144,5 @@ h1,h2{color:var(--ink)}
 .cf{border-radius:70% 20% 70% 20%}
 
 @media(max-width:480px){.phone{border-radius:0}.hero{margin-left:12px;margin-right:12px}.hd{padding-top:calc(22px + env(safe-area-inset-top,0px))}}
-@media(max-height:760px){.hero{min-height:420px}.hero>div[style*="position:relative"]{min-height:386px}#homeplant{top:38px;height:210px}#homeplant .character-art{max-height:205px}}
+@media(max-height:760px){.hero{min-height:420px}.hero>div[style*="position:relative"]{min-height:386px}#homeplant{top:34px;height:210px}#homeplant .character-art{max-height:205px}#homeplant .character-art[data-growth="0"]{width:128px;max-width:128px;max-height:145px;margin-bottom:36px}}
 @media(prefers-reduced-motion:reduce){.character-art{transform:translateY(var(--character-baseline,0)) scale(var(--character-scale,1))!important}}

@@ -20,9 +20,10 @@
   }
   function image(value,options={}){
     const k=kind(value),meta=layout[k];
+    const growth=growthIndex(options.stage,options.progress);
     const cls=['plant','character-art',options.mood==='sad'?'sad':'',options.pose?`pose-${options.pose}`:''].filter(Boolean).join(' ');
     const label=options.label||`${names[k]} plant character`;
-    return`<img class="${cls}" src="${asset(k,options)}" alt="${label}" style="--character-scale:${meta.scale};--character-baseline:${meta.baseline}px" draggable="false">`;
+    return`<img class="${cls}" data-growth="${growth}" src="${asset(k,options)}" alt="${label}" style="--character-scale:${meta.scale};--character-baseline:${meta.baseline}px" draggable="false">`;
   }
   window.GWMCharacters={asset,image,kind,names,layout,growthIndex};
 })();
