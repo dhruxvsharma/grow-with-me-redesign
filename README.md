@@ -5,6 +5,8 @@ An installable, local-first habit tracker that turns daily progress into a livin
 ## What is included
 
 - Responsive phone-first interface with desktop preview frame
+- Watercolor greenhouse-journal visual system with Sprout, Blossom, and Cactus character packs
+- Five growth artworks, seven expressions, and six poses per character
 - Onboarding and three plant varieties
 - Habit creation, editing, deletion, and daily completion
 - Persistent plant growth, drops, streaks, settings, and history
@@ -48,13 +50,17 @@ Import the repository as a new project. Choose **Other** as the framework preset
 ```text
 index.html              Application screens and dialogs
 css/styles.css          Visual system, responsive layout, and motion
+css/theme.css           Greenhouse-journal theme and component restyle
 js/storage.js           Versioned local state and daily rollover
+js/characters.js        Character asset manifest and state resolver
 js/app.js               Rendering and interactions
 manifest.webmanifest    Install metadata
 sw.js                   Offline application-shell cache
 404.html                Static-host fallback
 assets/assets.js        Optional custom plant-art mapping
 assets/icons/           Install and maskable icons
+assets/characters/      Normalized character growth, mood, and pose assets
+assets/scenes/          Watercolor habitat backgrounds and provenance
 assets/concepts/        Reference artwork
 ```
 

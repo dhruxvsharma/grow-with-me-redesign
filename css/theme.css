@@ -1,0 +1,127 @@
+:root{
+  --ink:#283A24;--mute:#6F7868;--bg:#F7F1E5;--card:#FFFDF7;--line:#D9D0B9;
+  --leaf:#5E8C3A;--leaf-dark:#3E6529;--young:#A7C957;--clay:#C98252;
+  --rose:#F58EA0;--sky:#BBD9D1;--sun:#F4C35C;--lilac:#D9D2E9;
+  --sh:0 10px 0 -7px rgba(82,61,36,.18),0 18px 38px -24px rgba(57,72,42,.3)
+}
+body{background:#E8E2D4;color:var(--ink)}
+.phone{background:var(--bg);box-shadow:0 0 0 8px #FBF8F0,0 42px 80px -32px rgba(52,65,42,.45)}
+.scr{background:var(--bg)}
+.wash,.wash.gray{background-color:var(--bg);background-image:none}
+.blob{display:none}
+h1,h2{color:var(--ink)}
+.sub,.cap{color:var(--mute)}
+.hd{padding:28px 24px 10px}
+.card{background:var(--card);border:1px solid rgba(120,101,66,.16);box-shadow:var(--sh)}
+.btn{background:var(--leaf);color:#fff;box-shadow:0 5px 0 #3E6529;font-weight:650}
+.btn:hover{background:#679744;box-shadow:0 7px 0 #3E6529;transform:translateY(-2px)}
+.btn:active{box-shadow:0 2px 0 #3E6529;transform:translateY(3px)}
+.btn.warm{background:var(--sun);color:#4B3C1C;box-shadow:0 5px 0 #C79A31}
+.ghost{color:var(--leaf-dark)}
+.chip{background:#FFFCF3;border:1px solid rgba(111,92,58,.16);box-shadow:0 5px 16px -12px rgba(50,58,38,.5)}
+.chip svg{stroke:var(--leaf-dark)}
+.in,input.in{background:#FFFDF7;border:1.5px solid var(--line);box-shadow:0 5px 0 rgba(128,105,70,.08)}
+.in:focus,input.in:focus{border-color:var(--leaf);box-shadow:0 0 0 4px rgba(94,140,58,.14)}
+
+/* Character artwork */
+.character-art{display:block;width:auto;max-width:100%;height:auto;margin:0 auto;object-fit:contain;transform:translateY(var(--character-baseline,0)) scale(var(--character-scale,1));transform-origin:center bottom;filter:drop-shadow(0 9px 7px rgba(67,55,34,.16));user-select:none}
+.character-art.bounce{animation:character-pop .72s cubic-bezier(.2,.9,.35,1.25)}
+.character-art.gust{animation:character-sway 1.5s ease-in-out}.character-art.look-l{animation:character-look-l 1.2s ease}.character-art.look-r{animation:character-look-r 1.2s ease}
+@keyframes character-pop{35%{transform:translateY(-13px) scale(1.05)}70%{transform:translateY(2px) scale(.98)}}
+@keyframes character-sway{35%{transform:rotate(3deg) scale(var(--character-scale,1))}70%{transform:rotate(-2deg) scale(var(--character-scale,1))}}
+@keyframes character-look-l{45%{transform:translateX(-5px) rotate(-1deg) scale(var(--character-scale,1))}}
+@keyframes character-look-r{45%{transform:translateX(5px) rotate(1deg) scale(var(--character-scale,1))}}
+
+/* Welcome — one illustrated world, not a decorative gradient */
+#welcome{background:#EDF2DE url('../assets/scenes/greenhouse-morning.jpg') center/cover no-repeat}
+#welcome:after{content:"";position:absolute;inset:0;background:rgba(255,252,243,.08);pointer-events:none}
+#welcome>.pad:first-of-type{z-index:1;background:rgba(255,253,247,.86);border:1px solid rgba(107,88,49,.14);border-radius:0 0 28px 28px;margin:0 18px!important;padding:54px 24px 22px;box-shadow:var(--sh)}
+#welcome [data-plant]{z-index:1;align-items:flex-end!important;padding-bottom:74px}
+#welcome [data-plant] .character-art{width:245px;max-height:270px}
+#welcome>.pad:last-of-type{z-index:1;background:rgba(255,253,247,.9);margin:0 18px 20px;border-radius:28px;padding:18px 18px 12px!important;box-shadow:var(--sh)}
+
+/* Selection cards become small habitat pedestals */
+#pick{background:#F7F1E5}
+.pick{gap:9px}
+.pk{min-height:160px;padding:12px 7px 14px;border-radius:22px;background:#FFFDF7;box-shadow:0 5px 0 rgba(117,94,58,.12)}
+.pk .character-art{width:92px;height:104px;object-fit:contain}
+.pk.on{background:#EEF5DE;border-color:var(--leaf);box-shadow:0 5px 0 rgba(94,140,58,.28),0 0 0 2px var(--leaf)}
+.pk h3{margin-top:5px;font-size:14px}
+
+/* Home habitat */
+#home .body{background:#F7F1E5}
+.hero{min-height:472px;margin:8px 16px 0;padding:16px 16px 18px;border-radius:32px;background:#DDE9D3 url('../assets/scenes/greenhouse-morning.jpg') center/cover no-repeat;border:1px solid rgba(95,93,61,.18);box-shadow:0 8px 0 rgba(129,99,59,.1),0 22px 46px -28px rgba(43,57,35,.45)}
+.hero.gray{filter:saturate(.55);background-color:#D8DDD3}
+.hero .hill{display:none}
+.hero>div[style*="position:relative"]{height:100%;min-height:438px;display:flex;flex-direction:column;justify-content:flex-end}
+#homeplant{position:absolute;left:50%;top:52px;transform:translateX(-50%);width:250px;height:240px;display:flex;align-items:flex-end;justify-content:center}
+#homeplant .character-art{max-width:235px;max-height:235px}
+.bub{top:18px;background:#FFFDF7;border:1px solid rgba(92,77,49,.15);color:var(--ink);max-width:230px}
+.hero .row{position:relative;margin:0!important;padding:15px 16px 10px;border-radius:22px 22px 0 0;background:rgba(255,253,247,.92);backdrop-filter:blur(6px)}
+.hero .bar{position:relative;margin:0 16px;height:11px;background:#E5DDCA;border:2px solid rgba(91,74,42,.1)}
+.hero .bar i{background:var(--young)}
+.hero #ptxt{position:relative;margin:0 16px!important;padding:8px 0 14px;background:rgba(255,253,247,.92);border-radius:0 0 18px 18px;text-align:center}
+#mood{background:#EEF5DE;color:var(--leaf-dark)}
+
+/* Daily summary and garden journal */
+.tiles{gap:10px;margin-top:18px}
+.tile{min-height:96px;border-radius:22px;border:1px solid rgba(117,91,52,.14);box-shadow:0 5px 0 rgba(117,91,52,.1)}
+.tile.s{background:#FBE6D7}.tile.w{background:#DDEBE7}
+.tile b{font-family:var(--d);color:var(--ink)}
+.sk{border-radius:24px;background:#FFFDF7}
+.seg{background:#EAE2D1;border:1px solid rgba(114,94,61,.12);box-shadow:none}
+.seg button.on{background:var(--card);color:var(--leaf-dark);box-shadow:0 3px 8px rgba(81,67,44,.12)}
+
+/* Garden ledger habit cards */
+.task{border-radius:20px;background:#FFFCF3;border:1px solid rgba(121,98,59,.18);box-shadow:0 5px 0 rgba(119,95,57,.11);overflow:visible;margin-bottom:13px}
+.task:before{content:"";position:absolute;left:20px;right:20px;bottom:-6px;height:6px;border-radius:0 0 8px 8px;background:#E6DCC7;z-index:-1}
+.task-hit{min-height:76px;padding:12px 58px 12px 12px}
+.task .ic{width:48px;height:48px;border-radius:15px;border:1px solid rgba(82,64,38,.1);box-shadow:inset 0 -3px rgba(83,65,39,.06)}
+.task h3{font-size:16px}.task .cap{margin-top:4px;display:block}
+.task .ck{width:34px;height:34px;border:2px solid #A8B89B;background:#F8F4EA}
+.task-edit{right:8px;color:#7A806E}
+.task.done{background:#ECF3DE;border-color:#BCD09C;box-shadow:0 5px 0 #D3DFC0}
+.task.done:after{content:"✿";position:absolute;right:50px;top:8px;color:var(--leaf);font-size:15px;transform:rotate(12deg)}
+.task.done h3{color:var(--ink);text-decoration:none}.task.done .cap{color:#637558}
+.task.done .ck{background:var(--leaf);border-color:var(--leaf)}
+
+/* Sheets resemble clipped plant tags */
+.scrim{background:rgba(40,58,36,.42);backdrop-filter:blur(3px)}
+.sheet{background:#F7F1E5;border:1px solid rgba(98,79,48,.2);box-shadow:0 -12px 45px rgba(48,56,37,.28)}
+.grab{background:#B9AD94}
+.chips .chip.on{background:#DDEBC6;color:var(--leaf-dark);border-color:#9CB777}
+.tg{background:#D9D0BE}.tg.on{background:var(--leaf)}
+
+/* Journal-like secondary screens */
+#progress .card,#profile .card{border-radius:20px;box-shadow:0 5px 0 rgba(117,91,52,.1)}
+.stat .card{background:#FFF9EC}.stat b{color:var(--leaf-dark)}
+.cal .d.h{background:#CFE2B2;color:#355A2C}.cal .d.s{background:#E5D5D1;color:#79534A}.cal .d.t{background:var(--sun);color:#4E3B17;box-shadow:0 0 0 3px rgba(244,195,92,.24)}
+.bars i{background:var(--leaf);box-shadow:none}
+.gar{gap:12px}
+.gc{border-radius:24px;background:#FFF9EC;min-height:210px;border-bottom:5px solid #E4D6BA}
+.gc .character-art{width:122px;height:128px;object-fit:contain}
+.gc.lock{background:#EFE8D9;border-style:dashed;box-shadow:none}
+.avatar{background:#F0D7A6;color:#4D612F;border:4px solid #FFF9EC;box-shadow:0 0 0 1px #CDBE9E}
+
+/* Recovery is supportive, not gloomy */
+#sad{background:#DDE3DA url('../assets/scenes/greenhouse-morning.jpg') center/cover no-repeat}
+#sad:before{content:"";position:absolute;inset:0;background:rgba(92,104,98,.42);backdrop-filter:grayscale(.35)}
+#sad>.pad,#sad>[data-plant]{z-index:1}
+#sad>.pad:first-of-type{background:rgba(255,253,247,.9);margin:54px 18px 0!important;padding:22px;border-radius:26px}
+#sad [data-plant] .character-art{width:245px;max-height:270px}
+#sad>.pad:last-of-type{background:rgba(255,253,247,.9);margin:0 18px 20px;border-radius:25px;padding:18px!important}
+
+/* Navigation */
+.tabs{left:18px;right:18px;background:#FFFDF7;border:1px solid rgba(104,83,49,.17);box-shadow:0 7px 0 rgba(105,83,49,.12),0 18px 34px -22px rgba(44,54,35,.55)}
+.tabs button{color:#8C927F}.tabs button.on{color:var(--leaf-dark)}
+.tabs .fab{background:var(--leaf);color:#fff;box-shadow:0 5px 0 var(--leaf-dark)}
+
+/* Celebration */
+.ov{background:#F4E7C9;color:var(--ink)}
+.ov .ring{border-color:rgba(94,140,58,.2)}
+#gplant .character-art{width:235px;max-height:260px}
+.cf{border-radius:70% 20% 70% 20%}
+
+@media(max-width:480px){.phone{border-radius:0}.hero{margin-left:12px;margin-right:12px}.hd{padding-top:calc(22px + env(safe-area-inset-top,0px))}}
+@media(max-height:760px){.hero{min-height:420px}.hero>div[style*="position:relative"]{min-height:386px}#homeplant{top:38px;height:210px}#homeplant .character-art{max-height:205px}}
+@media(prefers-reduced-motion:reduce){.character-art{transform:translateY(var(--character-baseline,0)) scale(var(--character-scale,1))!important}}
