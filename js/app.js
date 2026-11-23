@@ -34,7 +34,7 @@ function renderHome(){const h=new Date().getHours();$('#greet').textContent=h<12
  $('#date').textContent=new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'});
  $('#pname').textContent=S.name;$('#homeplant').innerHTML=plant(S.kind,S.stage,S.sad,220,S.sad?'sad':'happy',S.p);
  $('#hero').classList.toggle('gray',S.sad);$('#mood').textContent=S.sad?'Feeling droopy':'Happy';
- $('#stagelbl').textContent=`${STG[S.stage-1]} · stage ${S.stage} of 4`;$('#streak').textContent=S.streak;$('#drops').textContent=S.drops;$('#streak0').textContent=S.streak;$('#drops0').textContent=S.drops;
+ const species=window.GWMCharacters.names[window.GWMCharacters.kind(S.kind)];$('#stagelbl').textContent=`${species} · ${STG[S.stage-1]} · stage ${S.stage} of 4`;$('#streak').textContent=S.streak;$('#drops').textContent=S.drops;$('#streak0').textContent=S.streak;$('#drops0').textContent=S.drops;
  const n=S.tasks.filter(t=>t.d).length,left=Math.ceil((100-S.p)/25);$('#done').textContent=`${n} of ${S.tasks.length}`;
  $('#ptxt').textContent=S.stage===4&&S.p>=100?'Fully grown. Keep your streak going.':`${left} more task${left>1?'s':''} until the next stage`;
  requestAnimationFrame(()=>$('#pbar').style.width=S.p+'%');
@@ -46,7 +46,7 @@ function complete(i,el){const t=S.tasks[i];if(t.d)return;t.d=1;el.classList.add(
  const f=document.createElement('i');f.className='fly';$('#ph').append(f);
  const sx=a.left-ph.left,sy=a.top-ph.top,ex=b.left-ph.left+b.width/2-11,ey=b.top-ph.top+b.height*.3;
  f.animate([{transform:`translate(${sx}px,${sy}px) scale(.6)`},{transform:`translate(${(sx+ex)/2+30}px,${Math.min(sy,ey)-40}px) scale(1.1)`,offset:.5},{transform:`translate(${ex}px,${ey}px) scale(.5)`,opacity:.2}],{duration:900,easing:'cubic-bezier(.4,0,.3,1)'}).onfinish=()=>{f.remove();
-  const wasSad=S.sad;S.sad=false;S.drops++;S.p=Math.min(100,S.p+25);$('#homeplant').innerHTML=plant(S.kind,S.stage,0,220,'joy',S.p);$('#homeplant img').classList.add('bounce');
+  const wasSad=S.sad;S.sad=false;S.drops++;S.p=Math.min(100,S.p+25);$('#homeplant').innerHTML=plant(S.kind,S.stage,0,220,'happy',S.p);$('#homeplant img').classList.add('bounce');
   $('#hero').classList.remove('gray');$('#mood').textContent='Happy';joy();$('#pbar').style.width=S.p+'%';$('#drops').textContent=S.drops;$('#dropc').classList.remove('pop');void $('#dropc').offsetWidth;$('#dropc').classList.add('pop');
   if(S.tasks.every(x=>x.d)){S.streak++;S.history[window.GWMStore.today()]={completed:S.tasks.length,total:S.tasks.length,missed:false};$('#streak').textContent=S.streak;$('#streakc').classList.add('pop');renderStreak()}
   $('#done').textContent=`${S.tasks.filter(x=>x.d).length} of ${S.tasks.length}`;
@@ -86,7 +86,7 @@ function face(m){const k='#6B514A',j=m==='joy',s=m==='sad';
  const mouth=j?`<path d="M93 187q7 11 14 0z" fill="#EE9A9A" stroke="${k}" stroke-width="2" stroke-linejoin="round"/>`:s?`<path d="M94 194q6-6 12 0" stroke="${k}" stroke-width="2.6" fill="none" stroke-linecap="round"/>`:`<path d="M94 187q6 7 12 0" stroke="${k}" stroke-width="2.6" fill="none" stroke-linecap="round"/>`;
  const op=j?.8:s?.3:.5;
  return `<g class="eyes">${eyes}</g><ellipse cx="79" cy="188" rx="5" ry="3.5" fill="#F4A9A0" opacity="${op}"/><ellipse cx="121" cy="188" rx="5" ry="3.5" fill="#F4A9A0" opacity="${op}"/>${mouth}${s?'<path d="M124 184q4 6 0 9-4-3 0-9z" fill="#A9D8F5"/>':''}`}
-function setMood(m){const img=$('#homeplant .character-art');if(!img)return;const mood=m==='joy'?'excited':m==='sad'?'sad':undefined;img.src=window.GWMCharacters.asset(S.kind,{stage:S.stage,progress:S.p,mood})}
+function setMood(m){const img=$('#homeplant .character-art');if(!img)return;const fullyGrown=window.GWMCharacters.growthIndex(S.stage,S.p)===4;if(!fullyGrown){img.src=window.GWMCharacters.asset(S.kind,{stage:S.stage,progress:S.p});return}const mood=m==='joy'?'excited':m==='sad'?'sad':undefined;img.src=window.GWMCharacters.asset(S.kind,{stage:S.stage,progress:S.p,mood})}
 const Q={idle:['Good vibes only, and a little sunshine.','I can feel myself growing!','Small steps count. Thanks for showing up.','Is that a breeze? Lovely.','You are doing great today.','Slow and steady wins the garden.'],joy:['Ahh, that was refreshing!','Yum! More of that, please.','Look at me go!','You remembered me. Thank you!','Feeling brand new!'],sad:['I am a little thirsty…','I missed you. One small task?','Rough day? We can grow slowly.']};
 let qi=0,qt;function say(t){const b=$('#bub');if(!b)return;b.classList.remove('on');void b.offsetWidth;b.textContent=t;b.classList.add('on')}
 function startQuotes(){clearInterval(qt);const p=()=>{const a=S.sad?Q.sad:Q.idle;say(a[qi++%a.length])};setTimeout(p,500);qt=setInterval(()=>{if($('#home').classList.contains('on'))p()},7500)}

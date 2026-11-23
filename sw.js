@@ -1,4 +1,4 @@
-const CACHE='grow-with-me-v2';
+const CACHE='grow-with-me-v3';
 const kinds=['sprout','blossom','cactus'];
 const growth=kinds.flatMap(kind=>Array.from({length:5},(_,i)=>`./assets/characters/${kind}/growth/${i}.png`));
 const moods=kinds.flatMap(kind=>['happy','sad','surprised','angry','sleepy','excited','confused'].map(state=>`./assets/characters/${kind}/moods/${state}.png`));

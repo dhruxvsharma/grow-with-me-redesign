@@ -57,14 +57,26 @@ h1,h2{color:var(--ink)}
 #homeplant{position:absolute;left:50%;top:52px;transform:translateX(-50%);width:250px;height:240px;display:flex;align-items:flex-end;justify-content:center}
 #homeplant .character-art{max-width:235px;max-height:235px}
 .bub{top:18px;background:#FFFDF7;border:1px solid rgba(92,77,49,.15);color:var(--ink);max-width:230px}
-.hero .row{position:relative;margin:0!important;padding:15px 16px 10px;border-radius:22px 22px 0 0;background:rgba(255,253,247,.92);backdrop-filter:blur(6px)}
-.hero .bar{position:relative;margin:0 16px;height:11px;background:#E5DDCA;border:2px solid rgba(91,74,42,.1)}
+.hero .row{position:relative}
+.hero .bar{position:relative;height:11px;background:#E5DDCA;border:2px solid rgba(91,74,42,.1)}
 .hero .bar i{background:var(--young)}
-.hero #ptxt{position:relative;margin:0 16px!important;padding:8px 0 14px;background:rgba(255,253,247,.92);border-radius:0 0 18px 18px;text-align:center}
+.plant-meta{position:relative;margin:0 -16px -18px;padding:18px 22px 16px;background:rgba(255,253,247,.96);border-top:1px solid rgba(104,83,49,.16);border-radius:28px 28px 0 0;backdrop-filter:blur(8px);box-shadow:0 -8px 24px rgba(50,58,38,.08)}
+.plant-meta .row{margin:0!important;padding:0;background:transparent;align-items:flex-start}
+.plant-meta #pname{font:500 29px/1.05 var(--d);letter-spacing:-.02em}
+.plant-meta #stagelbl{margin-top:5px;line-height:1.35}
+.plant-meta #mood{margin-top:1px;flex:none}
+.plant-meta .bar{margin:14px 0 0}
+.plant-meta #ptxt{margin:8px 0 0!important;padding:0;background:transparent;text-align:left;line-height:1.35}
 #mood{background:#EEF5DE;color:var(--leaf-dark)}
 
 /* Daily summary and garden journal */
-.tiles{gap:10px;margin-top:18px}
+.home-content{padding-top:22px}
+.today-head{margin:0 0 14px;align-items:flex-end}
+.today-head h2,.section-head h2{font-size:25px;margin-top:2px}
+.section-kicker{display:block;font:600 12px/1.2 var(--u);color:var(--leaf);letter-spacing:.02em}
+.garden-summary{margin-top:34px;padding-top:26px;border-top:1px solid rgba(119,98,62,.18)}
+.section-head{margin-bottom:14px}
+.tiles{gap:10px;margin-top:0}
 .tile{min-height:96px;border-radius:22px;border:1px solid rgba(117,91,52,.14);box-shadow:0 5px 0 rgba(117,91,52,.1)}
 .tile.s{background:#FBE6D7}.tile.w{background:#DDEBE7}
 .tile b{font-family:var(--d);color:var(--ink)}
@@ -115,6 +127,10 @@ h1,h2{color:var(--ink)}
 .tabs{left:18px;right:18px;background:#FFFDF7;border:1px solid rgba(104,83,49,.17);box-shadow:0 7px 0 rgba(105,83,49,.12),0 18px 34px -22px rgba(44,54,35,.55)}
 .tabs button{color:#8C927F}.tabs button.on{color:var(--leaf-dark)}
 .tabs .fab{background:var(--leaf);color:#fff;box-shadow:0 5px 0 var(--leaf-dark)}
+
+/* Hidden status UI must not peek into the viewport while inactive. */
+.toast{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-24px);transition:opacity .2s,transform .35s cubic-bezier(.2,.8,.2,1),visibility 0s .35s}
+.toast.on{opacity:1;visibility:visible;transform:none;transition-delay:0s}
 
 /* Celebration */
 .ov{background:#F4E7C9;color:var(--ink)}
